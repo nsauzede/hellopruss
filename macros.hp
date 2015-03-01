@@ -1,0 +1,40 @@
+// macros.hp
+//
+// macros can modify registers r25-r29
+//
+
+// This macro takes 40ns
+// It is as long as the pulse macro,
+// so the first µs is correct for all servos
+.macro pulse_on
+.mparam gpio, bit
+    NOP0    r27, r27, r27                                                                                       //  5ns
+    NOP0    r27, r27, r27
+    LDI     r28.w0, (1 << bit) & 0xFFFF                                                                         //  5ns
+    LDI     r28.w2, (1 << bit) >> 16                                                                            //  5ns
+    LDI     r29.w0, gpio + GPIO_SETDATAOUT & 0xFFFF                                                             //  5ns
+    LDI     r29.w2, gpio + GPIO_SETDATAOUT >> 16                                                                //  5ns
+    SBBO    r28, r29, 0, 4                                                                                 // 5ns + 5ns
+.endm
+
+// This macro takes 30ns
+.macro pulse_off
+.mparam gpio, bit
+    LDI     r28.w0, (1 << bit) & 0xFFFF                                                                         //  5ns
+    LDI     r28.w2, (1 << bit) >> 16                                                                            //  5ns
+    LDI     r29.w0, gpio + GPIO_CLEARDATAOUT & 0xFFFF                                                           //  5ns
+    LDI     r29.w2, gpio + GPIO_CLEARDATAOUT >> 16                                                              //  5ns
+    SBBO    r28, r29, 0, 4                                                                                 // 5ns + 5ns
+.endm
+
+// This macro waits for given delay, as multiple of 10ns
+// It takes 10ns more, so sub 1 to the theorical value before calling
+// delay must be >= 1
+.macro wait
+.mparam delay
+    LDI     r29.w0, delay & 0xFFFF                                                                              //  5ns
+    LDI     r29.w2, delay >> 16                                                                                 //  5ns
+WAIT_LOOP:
+    SUB     r29, r29, 1                                                                                         //  5ns
+    QBNE    WAIT_LOOP, r29, 0                                                                                   //  5ns
+.endm

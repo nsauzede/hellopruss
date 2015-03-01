@@ -1,0 +1,57 @@
+/dts-v1/;
+/plugin/;
+
+/ {
+    compatible = "ti,beaglebone", "ti,beaglebone-black";
+
+    /* identification */
+    part-number = "pinctrl-servos";
+    version = "00A0";
+
+    exclusive-use =
+        "P8.07",
+        "P8.08",
+        "P8.09",
+        "P8.10",
+        "pruss";
+
+    fragment@0 {
+        target = <&am33xx_pinmux>;
+        __overlay__ {
+            hello_pru_pins: pinmux_servos_pins {
+                pinctrl-single,pins = <
+                    0x090 0x07  /* P8.07 */
+                    0x094 0x07  /* P8.08 */
+                    0x09c 0x07  /* P8.09 */
+                    0x098 0x07  /* P8.10 */
+                >;
+            };
+        };
+    };
+
+    fragment@1{
+        target = <&pruss>;
+        __overlay__{
+            status = "okay";
+            pinctrl-names = "default";
+            pinctrl-0 = <&hello_pru_pins>;
+
+            gpio_00 {
+                pin-names     = "hello_pru:chan_00";
+                gpios         = <&gpio3 2 0>;       /* P8.07 */
+            };
+            gpio_01 {
+                pin-names     = "hello_pru:chan_01";
+                gpios         = <&gpio3 3 0>;       /* P8.08 */
+            };
+            gpio_02 {
+                pin-names     = "hello_pru:chan_02";
+                gpios         = <&gpio3 5 0>;       /* P8.09 */
+            };
+            gpio_03 {
+                pin-names     = "hello_pru:chan_03";
+                gpios         = <&gpio3 4 0>;       /* P8.10 */
+            };
+        };
+    };
+};
