@@ -42,14 +42,41 @@
 #define PULSES_0_BANK_ID        10  // Scratch pad used to store counters for servos pulses [0:15]
 #define PULSES_1_BANK_ID        11  // Scratch pad used to store counters for servos pulses [16:31]
 
-#define DELAY1       50000000                          // (1000-NB_SERVOS/2*40-10)/10
-#define DELAY2       50000000                          // (1000-NB_SERVOS/2*40-10)/10
+#define DELAY1      10000000                          // (1000-NB_SERVOS/2*40-10)/10
+#define DELAY2      10000000                          // (1000-NB_SERVOS/2*40-10)/10
 
-#define SERVO_00_GPIO           GPIO2   // P8.07
-#define SERVO_00_BIT            2
-#define SERVO_01_GPIO           GPIO2   // P8.08
-#define SERVO_01_BIT            3
-#define SERVO_02_GPIO           GPIO2   // P8.09
-#define SERVO_02_BIT            5
-#define SERVO_03_GPIO           GPIO2   // P8.10
-#define SERVO_03_BIT            4
+#define SERVO_00_GPIO           GPIO1   // P8.03
+#define SERVO_00_BIT            6
+#define SERVO_01_GPIO           GPIO1   // P8.04
+#define SERVO_01_BIT            7
+#define SERVO_02_GPIO           GPIO1   // P8.05
+#define SERVO_02_BIT            2
+#define SERVO_03_GPIO           GPIO1   // P8.06
+#define SERVO_03_BIT            3
+
+#define SERVO_04_GPIO           GPIO2   // P8.07
+#define SERVO_04_BIT            2
+#define SERVO_05_GPIO           GPIO2   // P8.08
+#define SERVO_05_BIT            3
+#define SERVO_06_GPIO           GPIO2   // P8.09
+#define SERVO_06_BIT            5
+#define SERVO_07_GPIO           GPIO2   // P8.10
+#define SERVO_07_BIT            4
+
+#define SERVO_08_GPIO           GPIO1   // P8.11
+#define SERVO_08_BIT            13
+#define SERVO_09_GPIO           GPIO1   // P8.12
+#define SERVO_09_BIT            12
+#define SERVO_10_GPIO           GPIO0   // P8.13
+#define SERVO_10_BIT            23
+#define SERVO_11_GPIO           GPIO0   // P8.14
+#define SERVO_11_BIT            26
+
+#define SERVO_12_GPIO           GPIO1   // P8.15
+#define SERVO_12_BIT            15
+#define SERVO_13_GPIO           GPIO1   // P8.16
+#define SERVO_13_BIT            14
+#define SERVO_14_GPIO           GPIO0   // P8.17
+#define SERVO_14_BIT            27
+#define SERVO_15_GPIO           GPIO2   // P8.18
+#define SERVO_15_BIT            1

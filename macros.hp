@@ -8,8 +8,6 @@
 // so the first µs is correct for all servos
 .macro pulse_on
 .mparam gpio, bit
-    NOP0    r27, r27, r27                                                                                       //  5ns
-    NOP0    r27, r27, r27
     LDI     r28.w0, (1 << bit) & 0xFFFF                                                                         //  5ns
     LDI     r28.w2, (1 << bit) >> 16                                                                            //  5ns
     LDI     r29.w0, gpio + GPIO_SETDATAOUT & 0xFFFF                                                             //  5ns

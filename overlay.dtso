@@ -9,10 +9,22 @@
     version = "00A0";
 
     exclusive-use =
+        "P8.03",
+        "P8.04",
+        "P8.05",
+        "P8.06",
         "P8.07",
         "P8.08",
         "P8.09",
         "P8.10",
+        "P8.11",
+        "P8.12",
+        "P8.13",
+        "P8.14",
+        "P8.15",
+        "P8.16",
+        "P8.17",
+        "P8.18",
         "pruss";
 
     fragment@0 {
@@ -20,10 +32,23 @@
         __overlay__ {
             hello_pru_pins: pinmux_servos_pins {
                 pinctrl-single,pins = <
+/* address flags:mode=7 */ 
+                    0x080 0x07  /* P8.03 */
+                    0x084 0x07  /* P8.04 */
+                    0x088 0x07  /* P8.05 */
+                    0x08c 0x07  /* P8.06 */
                     0x090 0x07  /* P8.07 */
                     0x094 0x07  /* P8.08 */
-                    0x09c 0x07  /* P8.09 */
-                    0x098 0x07  /* P8.10 */
+                    0x098 0x07  /* P8.09 */
+                    0x09c 0x07  /* P8.10 */
+                    0x0a0 0x07  /* P8.11 */
+                    0x0a4 0x07  /* P8.12 */
+                    0x0a8 0x07  /* P8.13 */
+                    0x0ac 0x07  /* P8.14 */
+                    0x0b0 0x07  /* P8.15 */
+                    0x0b4 0x07  /* P8.16 */
+                    0x0b8 0x07  /* P8.17 */
+                    0x0bc 0x07  /* P8.18 */
                 >;
             };
         };
@@ -36,21 +61,70 @@
             pinctrl-names = "default";
             pinctrl-0 = <&hello_pru_pins>;
 
+/* gpiox+1 pin_index */
             gpio_00 {
                 pin-names     = "hello_pru:chan_00";
-                gpios         = <&gpio3 2 0>;       /* P8.07 */
+                gpios         = <&gpio2 6 0>;       /* P8.03 */
             };
             gpio_01 {
                 pin-names     = "hello_pru:chan_01";
-                gpios         = <&gpio3 3 0>;       /* P8.08 */
+                gpios         = <&gpio2 7 0>;       /* P8.04 */
             };
             gpio_02 {
                 pin-names     = "hello_pru:chan_02";
-                gpios         = <&gpio3 5 0>;       /* P8.09 */
+                gpios         = <&gpio2 2 0>;       /* P8.05 */
             };
             gpio_03 {
                 pin-names     = "hello_pru:chan_03";
+                gpios         = <&gpio2 3 0>;       /* P8.06 */
+            };
+            gpio_04 {
+                pin-names     = "hello_pru:chan_00";
+                gpios         = <&gpio3 2 0>;       /* P8.07 */
+            };
+            gpio_05 {
+                pin-names     = "hello_pru:chan_01";
+                gpios         = <&gpio3 3 0>;       /* P8.08 */
+            };
+            gpio_06 {
+                pin-names     = "hello_pru:chan_02";
+                gpios         = <&gpio3 5 0>;       /* P8.09 */
+            };
+            gpio_07 {
+                pin-names     = "hello_pru:chan_03";
                 gpios         = <&gpio3 4 0>;       /* P8.10 */
+            };
+            gpio_08 {
+                pin-names     = "hello_pru:chan_00";
+                gpios         = <&gpio2 13 0>;       /* P8.11 */
+            };
+            gpio_09 {
+                pin-names     = "hello_pru:chan_01";
+                gpios         = <&gpio2 12 0>;       /* P8.12 */
+            };
+            gpio_10 {
+                pin-names     = "hello_pru:chan_02";
+                gpios         = <&gpio1 23 0>;       /* P8.13 */
+            };
+            gpio_11 {
+                pin-names     = "hello_pru:chan_03";
+                gpios         = <&gpio1 26 0>;       /* P8.14 */
+            };
+            gpio_12 {
+                pin-names     = "hello_pru:chan_00";
+                gpios         = <&gpio2 15 0>;       /* P8.15 */
+            };
+            gpio_13 {
+                pin-names     = "hello_pru:chan_01";
+                gpios         = <&gpio2 14 0>;       /* P8.16 */
+            };
+            gpio_14 {
+                pin-names     = "hello_pru:chan_02";
+                gpios         = <&gpio1 27 0>;       /* P8.17 */
+            };
+            gpio_15 {
+                pin-names     = "hello_pru:chan_03";
+                gpios         = <&gpio3 1 0>;       /* P8.18 */
             };
         };
     };

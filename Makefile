@@ -8,6 +8,8 @@ DTC=dtc
 SLOTS=/sys/devices/bone_capemgr.8/slots
 PINS=/sys/kernel/debug/pinctrl/44e10800.pinmux/pins
 
+CFLAGS+=-g -O0
+
 all: $(TARGET)
 
 loader: LDFLAGS+=-lprussdrv
